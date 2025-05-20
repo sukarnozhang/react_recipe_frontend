@@ -1,0 +1,13 @@
+.searchItem {
+    font-size: 32px;
+    background-color: lightgrey;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    width: 50%;
+}
+
+.responsiveIcon {
+    font-size: 32px;
+    padding-right: 10px;
+}

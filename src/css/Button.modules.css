@@ -1,0 +1,13 @@
+.itemButton {
+    background-color: white;
+    color: #662eed;
+    font-size: 20px;
+    margin: 4px 2px;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.itemButton:hover {    
+    background-color: #662eed;
+    color: white;
+  }
