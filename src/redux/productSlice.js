@@ -24,9 +24,16 @@ const initialState = {
             (item) => item.category === category
           );
         }
-      },
+      }
     },
+    extraReducers: (builder) => {
+      builder.addCase(fetchProducts.fulfilled, (state, action) => {
+        state.products = action.payload;
+        state.filteredItems = action.payload; // Initialize filteredItems with all products
+      });
+    }
   });
+  
 
-export const {filterByCAtegory, filterByExpire } = productSlice.actions;
+export const {filterByCategory, filterByExpire } = productSlice.actions;
 export default productSlice.reducer;

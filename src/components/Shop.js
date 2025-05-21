@@ -27,17 +27,6 @@ function Shop() {
     dispatch(fetchProducts());
   }, []);
 
-  const handleCategoryAll = () => {
-    const myProductList = [...products];
-    if (products.length >= 1) {
-      setFilteredItems(myProductList);
-      //console.log("My Filtered Products:", myProductList)
-    } 
-    else {
-      console.log("Product is empty");
-    }
-  };
-
 
   return (
     <div>
@@ -60,7 +49,8 @@ function Shop() {
       </div> */}
 
       <div className="expiryAndCategory">
-        <Button label="All Items" onClick={() => handleCategoryAll()} />
+        <Button label="All Items" onClick={() => dispatch(filterByCategory("All"))} />
+        <Button label="Fruit" onClick={() => dispatch(filterByCategory("fruit"))} />
         {/* <Button label="Fruits" onClick={() => handleCategoryFruit()} />
         <Button label="Meats" onClick={() => handleCategoryMeat()} />
         <Button label="Vegetables" onClick={() => handleCategoryVegetable()} />
@@ -69,8 +59,9 @@ function Shop() {
 
       <div className="products">
         {
-          filteredItems.map((filteredItems) => (
-            <Product data={filteredItems} key={filteredItems.id} />
+          filteredItems.map((item) => (
+            <Product data={item} key={item.id} />
+            
           ))
         }
       </div>
