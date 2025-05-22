@@ -11,7 +11,8 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   fetchProducts,
   filterByCategory,
-  handleSearchItem
+  handleSearchItem,
+  filterByExpiry
 } from "../redux/productSlice";
 
 
@@ -25,7 +26,7 @@ function Shop() {
   useEffect(() => {
     console.log("Effect running");
     dispatch(fetchProducts());
-  }, []);
+  }, [dispatch]);
 
 
   return (
@@ -33,20 +34,11 @@ function Shop() {
       <Logo />
       <SearchItem onChange={(e) => dispatch(handleSearchItem(e))} />
 
-      {/* <div className="expiryAndCategory">
-        <Button
-          label="Expired in 1 Months"
-          onClick={() => handleExpiry30Days()}
-        />
-        <Button
-          label="Expired in 2 Months"
-          onClick={() => handleExpiry60Days()}
-        />
-        <Button
-          label="Expired in 3 Months"
-          onClick={() => handleExpiry90Days()}
-        />
-      </div> */}
+      <div className="expiryAndCategory">
+        <Button label="Expire in 1 Month" onClick={() => dispatch(filterByExpiry(1))} />
+        <Button label="Expire in 2 Months" onClick={() => dispatch(filterByExpiry(2))} />
+        <Button label="Expire in 3 Months" onClick={() => dispatch(filterByExpiry(3))} />
+      </div>
 
       <div className="expiryAndCategory">
         <Button label="All Items" onClick={() => dispatch(filterByCategory("All"))} />

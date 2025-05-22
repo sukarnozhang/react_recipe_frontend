@@ -19,7 +19,6 @@ const productSlice = createSlice({
   reducers: {
     handleSearchItem: (state, action) => {
       const searchValue = action.payload.toLowerCase();
-
       if (searchValue === "") {
         state.filteredItems = state.products;
       } else {
@@ -39,6 +38,19 @@ const productSlice = createSlice({
         );
       }
     },
+
+    filterByExpiry: (state, action) => {
+      const now = new Date("2024-07-07T16:23:55.906Z"); // current date
+      const expiryIn = action.payload; // e.g. 1 for 1 month
+    
+      const futureDate = new Date(now); // clone current date
+      futureDate.setMonth(now.getMonth() + expiryIn);
+    
+      state.filteredItems = state.products.filter((item) => {
+        const expiryDate = new Date(item.expiryDate); // parse string to Date
+        return expiryDate >= now && expiryDate <= futureDate;
+      });
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
@@ -48,5 +60,5 @@ const productSlice = createSlice({
   },
 });
 
-export const { filterByCategory, handleSearchItem } = productSlice.actions;
+export const { filterByCategory, handleSearchItem, filterByExpiry } = productSlice.actions;
 export default productSlice.reducer;
