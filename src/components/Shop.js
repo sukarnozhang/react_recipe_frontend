@@ -1,9 +1,8 @@
 // Shop.js
 
-import { useState, useEffect } from "react";
-import axios from 'axios';
+import { useEffect } from "react";
 import Logo from "../logo";
-import styles from "../css/Shop.modules.css";
+import "../css/Shop.modules.css";
 import SearchItem from "./SearchItem";
 import Button from "./Button";
 import Product from "./Product";
@@ -11,7 +10,8 @@ import Product from "./Product";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchProducts,
-  filterByCategory
+  filterByCategory,
+  handleSearchItem
 } from "../redux/productSlice";
 
 
@@ -31,7 +31,7 @@ function Shop() {
   return (
     <div>
       <Logo />
-      <SearchItem />
+      <SearchItem onChange={(e) => dispatch(handleSearchItem(e))} />
 
       {/* <div className="expiryAndCategory">
         <Button
@@ -51,10 +51,9 @@ function Shop() {
       <div className="expiryAndCategory">
         <Button label="All Items" onClick={() => dispatch(filterByCategory("All"))} />
         <Button label="Fruit" onClick={() => dispatch(filterByCategory("fruit"))} />
-        {/* <Button label="Fruits" onClick={() => handleCategoryFruit()} />
-        <Button label="Meats" onClick={() => handleCategoryMeat()} />
-        <Button label="Vegetables" onClick={() => handleCategoryVegetable()} />
-        <Button label="Others" onClick={() => handleCategoryOthers()} /> */}
+        <Button label="Meat" onClick={() => dispatch(filterByCategory("meat"))} />
+        <Button label="Vegetable" onClick={() => dispatch(filterByCategory("vegetable"))} />
+        <Button label="Others" onClick={() => dispatch(filterByCategory("others"))} />
       </div>
 
       <div className="products">
