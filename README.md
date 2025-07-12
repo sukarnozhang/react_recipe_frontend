@@ -1,1 +1,1 @@
-![Logo](src/assets/landing_page.png)
+![Logo](src/assets/logo/landing_page.png)
