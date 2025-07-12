@@ -35,7 +35,7 @@ function Shop() {
     (state) => state.products
   );
 
-  // Fetch all products on component mount, using redux action
+  // Fetch all products using redux action
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
