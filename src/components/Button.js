@@ -1,5 +1,6 @@
-import styles from "../css/Button.modules.css"
+import "../css/Button.modules.css"
 
+// get the label and function
 function Button({ onClick, label }) {
     return (
         <div>

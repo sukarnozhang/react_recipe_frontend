@@ -1,6 +1,5 @@
-// Navigation Bar
+// Navigation Bar in general
 import { House, BookBookmark, ShoppingCart } from "phosphor-react";
-import { Link } from "react-router-dom";
 import styles from "../css/Navbar.modules.css";
 
 function Navbar() {

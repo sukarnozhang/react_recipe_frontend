@@ -1,9 +1,10 @@
 //Product.js
-
+// for each icon like applem, cranberry
 import "../css/Shop.modules.css";
 import { ShopContext } from "../context/shopContext";
 import { useContext } from "react";
 
+// the prop is from Shop.js with item and id
 function Product(props) {
     const { id, item, price, itemIMG } = props.data;
     const { addToCart, cartItems } = useContext(ShopContext);
@@ -11,7 +12,7 @@ function Product(props) {
 
     return (
         <div className="product">
-            <img src={itemIMG} />
+            <img src={itemIMG} alt="products" />
             <div>
                 <p>
                     <b>{item}</b>
