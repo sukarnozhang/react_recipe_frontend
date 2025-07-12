@@ -3,6 +3,7 @@
 import { createContext, useState, useEffect } from "react";
 
 // Create context object
+// to make it clear the default context value is intentionally empty or invalid
 export const ShopContext = createContext(null);
 
 // Initializes the cart with all product quantities set to 0
@@ -34,7 +35,7 @@ function ShopContextProvider({ children, products }) {
     }));
   };
 
-  // Context value shared with consumer components
+  // Context value shared with product.js components
   const contextValue = {
     cartItems,
     addToCart,

@@ -1,31 +1,37 @@
-//Product.js
-// for each icon like applem, cranberry
-import "../css/Shop.modules.css";
-import { ShopContext } from "../context/shopContext";
+// Product.js
+// Displays a single product with image, name, price, and add-to-cart button
+
+import "../css/Shop.modules.css"; 
 import { useContext } from "react";
+import { ShopContext } from "../context/shopContext";
 
-// the prop is from Shop.js with item and id
 function Product(props) {
-    const { id, item, price, itemIMG } = props.data;
-    const { addToCart, cartItems } = useContext(ShopContext);
-    const cartItemCount = cartItems[id];
+  // Destructure product data passed as prop from parent (Shop.js)
+  const { id, item, price, itemIMG } = props.data;
 
-    return (
-        <div className="product">
-            <img src={itemIMG} alt="products" />
-            <div>
-                <p>
-                    <b>{item}</b>
-                </p>
-                <p>
-                    ${parseFloat(price).toFixed(2)}
-                </p>
-            </div>
-            <button className="addToCart" onClick={() => addToCart(id)}>
-                Add To Cart {cartItemCount > 0 && `(${cartItemCount})`}
-            </button>
-        </div>
-    )
+  // Get addToCart function and current cart items from ShopContext
+  const { addToCart, cartItems } = useContext(ShopContext);
+
+  // Get quantity of this item currently in the cart
+  const cartItemCount = cartItems[id];
+
+  return (
+    <div className="product">
+      {/* Product image */}
+      <img src={itemIMG} alt={item} />
+
+      {/* Product details: name and formatted price */}
+      <div>
+        <p><b>{item}</b></p>
+        <p>${parseFloat(price).toFixed(2)}</p>
+      </div>
+
+      {/* Add to Cart button: shows count if already added */}
+      <button className="addToCart" onClick={() => addToCart(id)}>
+        Add To Cart {cartItemCount > 0 && `(${cartItemCount})`}
+      </button>
+    </div>
+  );
 }
 
 export default Product;
